@@ -9,13 +9,13 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      authorName: {
+      author_name: {
         type: Sequelize.STRING(100)
       },
-      photoName: {
+      photo_name: {
         type: Sequelize.STRING(100)
       },
-      imageFile: {
+      image_file: {
         type: Sequelize.STRING
       },
       createdAt: {

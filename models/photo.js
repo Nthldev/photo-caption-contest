@@ -23,7 +23,10 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Photo',
-    underscored: true
+    tableName: 'Photos',
+    underscored: true,
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
   });
   return Photo;
 };

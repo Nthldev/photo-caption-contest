@@ -5,43 +5,43 @@ module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.bulkInsert('Photos', [
       {
-        authorName: 'ivoxis',
-        photoName: 'Abstrato',
-        imageFile: '/images/abstrato.jpg',
+        author_name: 'ivoxis',
+        photo_name: 'Abstrato',
+        image_file: '/images/abstrato.jpg',
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        authorName: 'pen_ash',
-        photoName: 'Pelicano',
-        imageFile: '/images/pelicano.jpg',
+        author_name: 'pen_ash',
+        photo_name: 'Pelicano',
+        image_file: '/images/pelicano.jpg',
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        authorName: 'lisellefae',
-        photoName: 'Camaleão',
-        imageFile: '/images/camaleao.jpg',
+        author_name: 'lisellefae',
+        photo_name: 'Camaleão',
+        image_file: '/images/camaleao.jpg',
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        authorName: 'Javali',
-        photoName: 'Vulcão',
-        imageFile: '/images/vulcao.jpg',
+        author_name: 'Javali',
+        photo_name: 'Vulcão',
+        image_file: '/images/vulcao.jpg',
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        authorName: 'Haykanush',
-        photoName: 'Janela',
-        imageFile: '/images/janelanoite.jpg',
+        author_name: 'Haykanush',
+        photo_name: 'Janela',
+        image_file: '/images/janelanoite.jpg',
         createdAt: new Date(),
         updatedAt: new Date()
       },
-      {  authorName: 'OlcayErtem',
-        photoName: 'Pulo',
-        imageFile: '/images/pulo.jpg',
+      {  author_name: 'OlcayErtem',
+        photo_name: 'Pulo',
+        image_file: '/images/pulo.jpg',
         createdAt: new Date(),
         updatedAt: new Date()
       }
