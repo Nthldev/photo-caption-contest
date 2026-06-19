@@ -3,7 +3,7 @@ const { Caption } = require('../models');
 //ROTA POST PARA INSERIR LEGENDA NA FOTO POR USUARIO
 const createCaption = async (req, res) => {
     const captionText = req.body.text;
-    const userCaptionId = 1;
+    const userCaptionId = req.session.userId;
     const imageCaptionId = req.params.id;
     try {
         const insertCaption = await Caption.create({text: captionText, userId: userCaptionId, imageId: imageCaptionId});

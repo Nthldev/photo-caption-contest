@@ -21,8 +21,32 @@ const registerUser = async (req, res) => {
     }
 };
 
+const loginUser = async (req, res) => {
+    const { email, password } = req.body;
+    try {
+        const findUser = await User.findOne({
+            attributes: ['id', 'email', 'hashPassword'],
+            where: {email: email}
+        });
+        if (findUser) {
+            const isMatch = await bcrypt.compare(password, findUser.hashPassword);
+            if (isMatch) {
+                req.session.userId = findUser.id;
+                return res.send('Login realizado com sucesso!');
+            } else {
+                return res.status(401).json({message: "Senha incorreta!"});
+            }
+        } else {
+            return res.status(404).json({message: `Usuario não encontrado com email ${email}`});
+        }
+    } catch(error) {
+        return res.status(500).json({error: error.message});
+    }
+};
+
 module.exports = {
     hashPassword,
-    registerUser
+    registerUser,
+    loginUser
 };
 
