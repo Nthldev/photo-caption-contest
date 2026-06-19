@@ -1,7 +1,10 @@
 const express = require('express');
 const app = express();
 require('dotenv').config();
+const session = require("express-session");
+const store = new session.MemoryStore();
 const imagesRouter = require('./routes/images');
+const authRouter = require('./routes/auth');
 
 const PORT = process.env.PORT || 3000;
 
@@ -9,7 +12,22 @@ app.use(express.json());
 
 app.use(express.static('public'));
 
+app.use(
+    session({
+        secret: process.env.SESSION_SECRET,
+        resave:false,
+        saveUninitialized: false,
+        store,
+        cookie: {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: 'lax',
+            maxAge: 24 * 60 * 60 * 1000
+        }
+    }));
+
 app.use('/images', imagesRouter);
+app.use('/auth', authRouter);
 
 app.get('/', (req, res)=>{
     res.send('Bem vindo ao concurso de fotos para legenda')
