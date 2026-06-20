@@ -44,9 +44,19 @@ const loginUser = async (req, res) => {
     }
 };
 
+const logoutUser = async (req, res, next) => {
+    req.session.destroy((err) => {
+        if(err) {
+            return next(err);
+        }
+        res.clearCookie('connect.sid');
+        return res.status(200).json({message: "Logout efetuado com sucesso!"});
+    });
+};
+
 module.exports = {
-    hashPassword,
     registerUser,
-    loginUser
+    loginUser,
+    logoutUser
 };
 
