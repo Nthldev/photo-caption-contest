@@ -10,6 +10,9 @@ const createCaption = async (req, res) => {
 
         return res.status(201).json({message: "Legenda criada com sucesso!", captionCreated: insertCaption.text});
     } catch(error) {
+        if (error.name === 'SequelizeUniqueConstraintError') {
+            res.status(409).json({message: "Este usuário já criou uma legenda para esta foto! Permissão de somente uma legenda por usuario/foto."});
+        }
         return res.status(500).json({error: error.message});
     }
 };

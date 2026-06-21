@@ -2,6 +2,7 @@ const express = require('express');
 const imagesRouter = express.Router();
 const { getImages, getImagesByID } = require('../controllers/imagesController');
 const { createCaption } = require('../controllers/captionsController');
+const { isAuthorized } = require ('../middlewares/auth');
 
 //GET para todas as imagens
 imagesRouter.get('/', getImages);
@@ -10,6 +11,6 @@ imagesRouter.get('/', getImages);
 imagesRouter.get('/:id', getImagesByID);
 
 //POST para inserção de Legenda na Imagem por Usuario
-imagesRouter.post('/:id/captions', createCaption);
+imagesRouter.post('/:id/captions', isAuthorized, createCaption);
 
 module.exports = imagesRouter;
