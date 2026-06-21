@@ -14,7 +14,21 @@ const cacheGetImages = (req, res, next) => {
     next();
 };
 
+//Middlware de cache exclusivo para rota getImagesByID
+const cacheGetImageById = (req, res, next) => {
+    const cacheKey = `image_id_${req.params.id}`;
+    const dataCache = myCache.get(cacheKey);
+
+    if (dataCache) {
+        console.log(`Respondido pelo cache do Middleware (${cacheKey})`);
+        return res.json(dataCache);
+    }
+
+    next();
+};
+
 module.exports = {
     myCache,
-    cacheGetImages
+    cacheGetImages,
+    cacheGetImageById
 };

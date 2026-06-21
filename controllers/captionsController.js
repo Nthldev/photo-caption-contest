@@ -1,4 +1,5 @@
 const { Caption } = require('../models');
+const { myCache } = require('../middlewares/cache');
 
 //ROTA POST PARA INSERIR LEGENDA NA FOTO POR USUARIO
 const createCaption = async (req, res) => {
@@ -7,6 +8,8 @@ const createCaption = async (req, res) => {
     const imageCaptionId = req.params.id;
     try {
         const insertCaption = await Caption.create({text: captionText, userId: userCaptionId, imageId: imageCaptionId});
+
+        myCache.del(`image_id_${req.params.id}`);
 
         return res.status(201).json({message: "Legenda criada com sucesso!", captionCreated: insertCaption.text});
     } catch(error) {

@@ -5,9 +5,11 @@ const { myCache } = require('../middlewares/cache');
 const getImages = async (req, res) => {
     try {
         const allImages = await Photo.findAll();
-        myCache.set('get_images', allImages);
 
-        return res.status(200).json(allImages);
+        const plainAllImages = allImages.map(image => image.toJSON());
+        myCache.set('get_images', plainAllImages);
+
+        return res.status(200).json(plainAllImages);
     } catch(error) {
         return res.status(500).json({error: error.message});
     }
@@ -32,7 +34,11 @@ const getImagesByID = async (req, res) => {
             }]
         });
 
-        return res.status(200).json(imageByIdWithCaptions);
+        const plainImageByIdWithCaptions = imageByIdWithCaptions.toJSON();
+
+        myCache.set(`image_id_${req.params.id}`, plainImageByIdWithCaptions);
+
+        return res.status(200).json(plainImageByIdWithCaptions);
     } catch(error) {
         return res.status(500).json({error: error.message});
     }
