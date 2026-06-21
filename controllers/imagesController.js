@@ -1,9 +1,11 @@
 const { Photo, Caption, User } = require('../models');
+const { myCache } = require('../middlewares/cache');
 
 //ROTA GET PARA RECEBER TODAS AS IMAGENS
 const getImages = async (req, res) => {
     try {
         const allImages = await Photo.findAll();
+        myCache.set('get_images', allImages);
 
         return res.status(200).json(allImages);
     } catch(error) {

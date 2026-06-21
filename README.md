@@ -1,5 +1,7 @@
 ## Decisões Técnicas
 
+- **Buscar Fotos/Legendas**: o exercício explicitamente pede para que as legendas associadas às fotos só sejam acessadas quando buscar a imagem por id e não quando buscar todas as imagens.
+
 - **Session Storage**: MemoryStore em desenvolvimento. 
 Em produção recomenda-se connect-pg-simple ou Redis.
 
@@ -11,3 +13,6 @@ Em produção recomenda-se connect-pg-simple ou Redis.
 
 - **Utils**: Função de Hash com bcrypt por enquanto direto em authController. 
 Em produção recomenda-se criação de pasta /Utils para funções de apoio.
+
+- **commits**: commits foram feitos inicialmente na lingua nativa do desenvolvedor em portugues e mantido desta forma para manter coerência. 
+No entanto, o recomendado é realização de commits em inglês para entendimento global.
