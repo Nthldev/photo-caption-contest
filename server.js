@@ -5,6 +5,8 @@ const session = require("express-session");
 const store = new session.MemoryStore();
 const imagesRouter = require('./routes/images');
 const authRouter = require('./routes/auth');
+const swaggerUi = require('swagger-ui-express');
+const swaggerSpec = require('./swagger/swagger');
 
 const PORT = process.env.PORT || 3000;
 
@@ -12,6 +14,7 @@ app.use(express.json());
 
 app.use(express.static('public'));
 
+//Sessão Express
 app.use(
     session({
         secret: process.env.SESSION_SECRET,
@@ -26,6 +29,10 @@ app.use(
         }
     }));
 
+//Documentação Swagger
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+//Rotas de Imagens e Autenticação
 app.use('/images', imagesRouter);
 app.use('/auth', authRouter);
 
