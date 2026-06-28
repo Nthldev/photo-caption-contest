@@ -3,6 +3,10 @@
 
 [CodeAcademy project link](https://www.codecademy.com/journeys/back-end-engineer/paths/becj-22-security-infrastructure-scalibility/tracks/becj-22-portfolio-project-photo-caption-contest/modules/becp-22-photo-caption-contest-e59b30e6-216a-4b4e-8618-38b2556b8522/kanban_projects/ext-proj-caption-contest)
 
+> **Note:** This application is hosted on Render's free tier. 
+> The first request may take up to 60 seconds to respond 
+> while the service wakes up.
+
 ## Description
 
 This project was developed as part of the Back-End Engineer Career Path.
