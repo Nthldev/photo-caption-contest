@@ -1,6 +1,8 @@
+require('dotenv').config();
+
 const express = require('express');
 const app = express();
-require('dotenv').config();
+
 const session = require("express-session");
 const store = new session.MemoryStore();
 const imagesRouter = require('./routes/images');
