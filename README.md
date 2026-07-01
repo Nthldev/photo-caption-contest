@@ -99,8 +99,8 @@ npm start
 
 After initiating successfully the API will be avaiable on the following address:
 
-* **URL Base:** `http://localhost:3000`
-
+- **Production URL:** https://photo-caption-contest-y720.onrender.com
+- **Local URL:** http://localhost:3000
 ---
 
 ## Avaiable Endpoints
@@ -121,7 +121,8 @@ After initiating successfully the API will be avaiable on the following address:
 
 ## Link to documentation using Swagger
 
-- `http://localhost:3000/api-docs`
+- **Production:** https://photo-caption-contest-y720.onrender.com/api-docs
+- **Local (development):** http://localhost:3000/api-docs
 
 ## Technical Decisions
 
@@ -140,6 +141,8 @@ After initiating successfully the API will be avaiable on the following address:
 - **Commits**: Commits were initially made in the developer's native language (Portuguese) and kept this way to maintain consistency. However, making commits in English is recommended for global understanding.
 
 - **Cache/JSON**: Due to an error encountered during development between the cache and the Sequelize object, I chose to convert the Sequelize instances into pure JSON using `.toJSON()` before inserting them into the cache, which is actually a best practice. The strategy chosen for cache maintenance was cache-aside.
+
+- **proxy config**: Configured `trust proxy` on Express so it recognizes HTTPS terminated at the Cloudflare/Render proxy layer and sends session cookies correctly to clients.
 
 ## Possible future improvements
 
