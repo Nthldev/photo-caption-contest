@@ -16,6 +16,8 @@ app.use(express.json());
 
 app.use(express.static('public'));
 
+app.set('trust proxy', 1);
+
 //Sessão Express
 app.use(
     session({
