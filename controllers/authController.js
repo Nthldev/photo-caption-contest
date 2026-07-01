@@ -32,8 +32,12 @@ const loginUser = async (req, res) => {
             const isMatch = await bcrypt.compare(password, findUser.hashPassword);
             if (isMatch) {
                 req.session.userId = findUser.id;
+                console.log('Session before save:', req.session);
                 req.session.save((err) => {
+                    console.log('Session after save:', req.session);
+                    console.log('Session ID:', req.sessionID);
                     if (err) {
+                        console.log('Session save error:', err);
                         return res.status(500).json({error: err.message});
                     }
                     return res.send('Login realizado com sucesso!');
