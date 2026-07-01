@@ -32,7 +32,12 @@ const loginUser = async (req, res) => {
             const isMatch = await bcrypt.compare(password, findUser.hashPassword);
             if (isMatch) {
                 req.session.userId = findUser.id;
-                return res.send('Login realizado com sucesso!');
+                req.session.save((err) => {
+                    if (err) {
+                        return res.status(500).json({error: err.message});
+                    }
+                    return res.send('Login realizado com sucesso!');
+                });
             } else {
                 return res.status(401).json({message: "Senha incorreta!"});
             }
