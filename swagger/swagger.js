@@ -13,6 +13,10 @@ const options = {
                 url: 'http://localhost:3000',
                 description: 'Servidor de Desenvolvimento (Local)'
             },
+            {
+                url: 'https://photo-caption-contest-y720.onrender.com',
+                description: 'Servidor de Produção (Render)'
+            },
         ],
         components: {
             securitySchemes: {
